@@ -1,8 +1,9 @@
 //mappa, di maplibre molto fika 
   const map = new maplibregl.Map({
     style: 'https://tiles.openfreemap.org/styles/liberty',
-    center: [9.100, 50.0],
-    zoom: 9.5,
+    center: [0, 0],
+    zoom: 0.5,
+    pitch: 0,
     container: 'map', 
 
   })
@@ -62,6 +63,19 @@
                 'line-width': 2.5
             },
             filter: ['in', '$type', 'LineString']
+        });
+
+        // Add 3D terrain
+        map.addSource('terrain', {
+            type: 'raster-dem',
+            url: 'https://demotiles.maplibre.org/terrain-tiles/tiles.json'
+        });
+        map.setTerrain({ source: 'terrain' });
+
+        // Set fog for space background
+        map.setFog({
+            color: 'rgb(0, 0, 0)',
+            'horizon-blend': 0.1
         });
           // qua 
         map.on('click', (e) => {
@@ -133,6 +147,10 @@
         map.setProjection({
             type: 'globe', // questo rende la mappa un globo, sinceramente pensavo sarebbe stato piu diffcile ma sono letteralmente 4 linee di codice e anche molto easy da scrivere
         });
+        // Set stars background
+        map.getCanvas().style.backgroundImage = 'url(stars.svg)';
+        map.getCanvas().style.backgroundSize = 'cover';
+        map.getCanvas().style.backgroundRepeat = 'no-repeat';
     });
 
     // To stay consistent with web mercator maps, globe is automatically enlarged when map center is nearing the poles. 
