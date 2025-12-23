@@ -5,7 +5,7 @@
         z-index: 1;
     }
 
-.distance-container > * {
+    .distance-container > * {
         background-color: rgba(0, 0, 0, 0.5);
         color: #fff;
         font-size: 11px;
@@ -14,31 +14,4 @@
         margin: 0;
         padding: 5px 10px;
         border-radius: 3px;
-    }
-
-#map {
-    border: none;
-}
-
-canvas {
-    border: none;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    margin: 0;
-    padding: 0;
-}
-
-#map {
-    margin: 0;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-} 
+    } 
